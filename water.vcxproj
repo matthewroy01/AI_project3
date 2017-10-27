@@ -45,6 +45,7 @@
     <ClInclude Include="UnitCreateWanderSOFMessage.h" />
     <ClInclude Include="UnitDeleteRandomMessage.h" />
     <ClInclude Include="UnitManager.h" />
+    <ClInclude Include="WallUnit.h" />
     <ClInclude Include="WanderAndSeek.h" />
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +83,7 @@
     <ClCompile Include="UnitCreateWanderSOFMessage.cpp" />
     <ClCompile Include="UnitDeleteRandomMessage.cpp" />
     <ClCompile Include="UnitManager.cpp" />
+    <ClCompile Include="WallUnit.cpp" />
     <ClCompile Include="WanderAndSeek.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

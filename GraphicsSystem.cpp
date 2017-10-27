@@ -1,4 +1,5 @@
 #include <allegro5/allegro.h>
+#include <allegro5\allegro_primitives.h>
 
 #include "Game.h"
 #include "GraphicsSystem.h"
@@ -87,4 +88,9 @@ ALLEGRO_BITMAP* GraphicsSystem::switchTargetBitmap( ALLEGRO_BITMAP* pNewTarget )
 	al_set_target_bitmap( pNewTarget );
 
 	return pOldTarget;
+}
+
+void GraphicsSystem::drawRectangle(Vector2D topLeft, Vector2D bottomRight)
+{
+	al_draw_rectangle(topLeft.getX(), topLeft.getY(), bottomRight.getX(), bottomRight.getY(), al_map_rgb(0, 0, 0), 1);
 }
