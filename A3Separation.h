@@ -5,6 +5,8 @@
 
 class KinematicUnit;
 
+const float DECAY_COEF_SEP = 0.1f;
+
 class A3Separation : public Steering
 {
 public:
@@ -14,6 +16,7 @@ public:
 	virtual Steering* getSteering();
 
 	float getDistance(KinematicUnit* target);
+	float getDistance(Vector2D target);
 
 private:
 	KinematicUnit* mpMover;

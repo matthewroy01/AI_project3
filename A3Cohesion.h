@@ -5,6 +5,8 @@
 
 class KinematicUnit;
 
+const float DECAY_COEF_COH = 0.1f;
+
 class A3Cohesion : public Steering
 {
 public:
@@ -13,8 +15,12 @@ public:
 
 	virtual Steering* getSteering();
 
+	float getDistance(KinematicUnit* target);
+	float getDistance(Vector2D target);
+
 private:
 	KinematicUnit* mpMover;
+	Vector2D mAveragePosition;
 };
 
 #endif

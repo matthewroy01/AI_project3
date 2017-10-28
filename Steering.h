@@ -25,6 +25,10 @@ const float W_WANDER = 0.1f;
 const float W_SEEKORFLEE = 0.6f;
 const float W_AVOID_COLLISION = 0.5f;
 const float W_AVOID_WALLS = 1.5f;
+const float W_COHESION = 0;
+const float W_GROUP_ALLIGNMENT = 0;
+const float W_SEPARATION = 0;
+const float W_VELOCITY_MATCH = 0;
 
 class Steering: public Trackable
 {
