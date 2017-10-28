@@ -34,8 +34,7 @@ const float ALL_RADIUS = 100.0f;
 
 // constants for collision
 const int CHARACTER_SIDE = 32;
-const int WALL_LONG = 1024;
-const int WALL_SHORT = 100;
+const int WALL_THICKNESS = 75;
 
 // pi for rotation
 const float MY_PI = 3.14159265;
@@ -88,7 +87,6 @@ private:
 	Timer* mpMasterTimer;
 	bool mShouldExit;
 	Sprite* mpEnemyArrow;
-	Sprite* mpWall;
 	
 	// new stuff
 	UnitManager* mpUnitManager;

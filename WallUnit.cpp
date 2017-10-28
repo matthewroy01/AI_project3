@@ -8,16 +8,25 @@ WallUnit::WallUnit(Vector2D topLeft, Vector2D bottomRight)
 	mTopLeft = topLeft;
 	mBottomRight = bottomRight;
 
-	mTopRight.setX(mTopLeft.getX());
-	mTopRight.setY(mBottomRight.getY());
+	mTopRight.setX(mBottomRight.getX());
+	mTopRight.setY(mTopLeft.getY());
 
-	mBottomLeft.setX(mBottomRight.getX());
-	mBottomLeft.setY(mTopLeft.getY());
+	mBottomLeft.setX(mTopLeft.getX());
+	mBottomLeft.setY(mBottomRight.getY());
+
+	mHeight = mBottomLeft.getY() - mTopLeft.getY();
+	mWidth = mTopRight.getX() - mTopLeft.getX();
+	mWidth = mWidth;
+}
+
+void WallUnit::Init()
+{
+
 }
 
 WallUnit::~WallUnit()
 {
-
+	
 }
 
 void WallUnit::draw()

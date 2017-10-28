@@ -3,6 +3,7 @@
 #include "Game.h"
 #include "UnitManager.h"
 #include "KinematicUnit.h"
+#include "WallUnit.h"
 #include "GraphicsSystem.h"
 
 A2AvoidWalls::A2AvoidWalls(KinematicUnit *pMover)
@@ -13,14 +14,14 @@ A2AvoidWalls::A2AvoidWalls(KinematicUnit *pMover)
 
 Steering* A2AvoidWalls::getSteering()
 {
-	for (int i = 0; i < GET_GAME->getUnitManager()->getNumberOfWalls(); i++)
+	for (int i = 0; i < gpGame->getUnitManager()->getNumberOfWalls(); i++)
 	{
 		// check for the collision type to see if any steering should be applied
-		if (getBoxOnBox(GET_GAME->getUnitManager()->GetWall(i)))
+		if (getBoxOnBox(gpGame->getUnitManager()->GetWall(i)))
 		{
 			// flee
 			std::cout << "avoid wall" << std::endl;
-			mLinear = Vector2D(GRAPHICS_SYSTEM->getWidth() / 2, GRAPHICS_SYSTEM->getHeight() / 2) - mpMover->getPosition();
+			mLinear = Vector2D(gpGame->getGraphicsSystem()->getWidth() / 2, gpGame->getGraphicsSystem()->getHeight() / 2) - mpMover->getPosition();
 
 			mLinear.normalize();
 			mLinear *= mpMover->getMaxVelocity();
@@ -37,13 +38,13 @@ Steering* A2AvoidWalls::getSteering()
 	return this;
 }
 
-bool A2AvoidWalls::getBoxOnBox(KinematicUnit* target)
+bool A2AvoidWalls::getBoxOnBox(WallUnit* target)
 {
 	if (
-		target->getPosition().getX() < mpMover->getPosition().getX() + mpMover->getWidth() &&
-		target->getPosition().getX() + target->getWidth() > mpMover->getPosition().getX() &&
-		target->getPosition().getY() < mpMover->getPosition().getY() + mpMover->getHeight() &&
-		target->getPosition().getY() + target->getHeight() > mpMover->getPosition().getY())
+		target->getTopLeft().getX() < mpMover->getPosition().getX() + mpMover->getWidth() &&
+		target->getTopLeft().getX() + target->getWidth() > mpMover->getPosition().getX() &&
+		target->getTopLeft().getY() < mpMover->getPosition().getY() + mpMover->getHeight() &&
+		target->getTopLeft().getY() + target->getHeight() > mpMover->getPosition().getY())
 	{
 		return true;
 	}

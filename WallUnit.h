@@ -11,10 +11,21 @@ class WallUnit : public Kinematic
 		WallUnit(Vector2D topLeft, Vector2D bottomRight);
 		~WallUnit();
 
+		void Init();
+
 		void draw();
+
+		Vector2D getTopLeft() { return mTopLeft; } 
+		Vector2D getTopRight() { return mTopRight; }
+		Vector2D getBottomLeft() { return mBottomLeft; }
+		Vector2D getBottomRight() { return mBottomRight; }
+
+		int getHeight() { return mHeight; }
+		int getWidth() { return mWidth; }
 
 	private:
 		Vector2D mTopLeft, mTopRight, mBottomLeft, mBottomRight;
+		int mHeight, mWidth;
 };
 
 #endif

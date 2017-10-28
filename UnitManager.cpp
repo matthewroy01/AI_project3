@@ -1,6 +1,7 @@
 #include "UnitManager.h"
 
 #include "KinematicUnit.h"
+#include "WallUnit.h"
 #include <cstdlib>
 #include "Game.h"
 #include "GameMessageManager.h"
@@ -88,7 +89,7 @@ void UnitManager::AddUnit(KinematicUnit* uni, int AItype)
 	}
 }
 
-void UnitManager::AddUnit(KinematicUnit* uni)
+void UnitManager::AddWallUnit(WallUnit* uni)
 {
 	mpWalls.push_back(uni);
 }
@@ -137,7 +138,7 @@ KinematicUnit* UnitManager::GetUnit(int id)
 	}
 }
 
-KinematicUnit* UnitManager::GetWall(int id)
+WallUnit* UnitManager::GetWall(int id)
 {
 	// return the unit at the specfied id
 	if (mpWalls[id] != NULL)
@@ -155,7 +156,7 @@ void UnitManager::UnitDraw(GraphicsBuffer* buffer)
 	// draw all walls
 	for (unsigned int i = 0; i < mpWalls.size(); i++)
 	{
-		mpWalls[i]->draw(buffer);
+		mpWalls[i]->draw();
 	}
 
 	// draw all units
@@ -170,15 +171,14 @@ void UnitManager::UnitUpdate(float t)
 	// update all units
 	for (unsigned int i = 0; i < mpUnits.size(); i++)
 	{
+		// update all values according to mode in addition to movement
 		mpUnits[i]->update(t, mAllMaxVelocity, mAllRadius, mAllAngularVelocity);
-
-		// update values according to mode
-
 	}
 }
 
 void UnitManager::ChangeCurrentMode(int mode)
 {
+	// changes the current mode affected in InputManager
 	switch (mode)
 	{
 		case 0 :
@@ -212,6 +212,7 @@ int UnitManager::GetCurrentMode()
 	return mCurrentMode;
 }
 
+// these functions tell all units to change their values
 void UnitManager::changeAllVelocity(bool add)
 {
 	if (add)

@@ -19,6 +19,7 @@
 #include "SpriteManager.h"
 #include "Timer.h"
 #include "KinematicUnit.h"
+#include "WallUnit.h"
 #include "PlayerMoveToMessage.h"
 
 // new stuff
@@ -160,15 +161,13 @@ bool Game::init()
 		mpEnemyArrow = mpSpriteManager->createAndManageSprite( AI_ICON_SPRITE_ID, pAIBuffer, 0, 0, pAIBuffer->getWidth(), pAIBuffer->getHeight() );
 	}
 
-	mpWall = mpSpriteManager->createAndManageSprite(WALL_SPRITE_ID, pWallBuffer, 0, 0, pWallBuffer->getWidth(), pWallBuffer->getHeight());
-
 	mpUnitManager = new UnitManager();
 
 	//setup walls
-	mpUnitManager->AddUnit(new KinematicUnit(mpWall, Vector2D(0, -50), 0, Vector2D(0, 0), 0, 0, 0, WALL_SHORT, WALL_LONG));
-	mpUnitManager->AddUnit(new KinematicUnit(mpWall, Vector2D(0, (mpGraphicsSystem->getWidth() / 2)), -0.5f * MY_PI, Vector2D(0, 0), 0, 0, 0, WALL_LONG, WALL_SHORT));
-	mpUnitManager->AddUnit(new KinematicUnit(mpWall, Vector2D(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getWidth() / 2), -0.5f * MY_PI, Vector2D(0, 0), 0, 0, 0, WALL_LONG, WALL_SHORT));
-	mpUnitManager->AddUnit(new KinematicUnit(mpWall, Vector2D(0, mpGraphicsSystem->getHeight() - 50), 0, Vector2D(0, 0), 0, 0, 0, WALL_SHORT, WALL_LONG));
+	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, 0), Vector2D(mpGraphicsSystem->getWidth(), WALL_THICKNESS)));
+	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, 0), Vector2D(WALL_THICKNESS, mpGraphicsSystem->getHeight())));
+	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(mpGraphicsSystem->getWidth() - WALL_THICKNESS, 0), Vector2D(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight())));
+	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, mpGraphicsSystem->getHeight() - WALL_THICKNESS), Vector2D(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight() - WALL_THICKNESS)));
 
 	//setup units
 	Vector2D pos( 0.0f, 0.0f );

@@ -4,6 +4,7 @@
 #include "Steering.h"
 
 class KinematicUnit;
+class WallUnit;
 
 class A2AvoidWalls : public Steering
 {
@@ -16,7 +17,7 @@ public:
 private:
 	KinematicUnit* mpMover;
 
-	bool getBoxOnBox(KinematicUnit* target);
+	bool getBoxOnBox(WallUnit* target);
 	bool getRaycast(KinematicUnit* target);
 };
 

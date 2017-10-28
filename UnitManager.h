@@ -6,6 +6,7 @@
 
 class Kinematic;
 class KinematicUnit;
+class WallUnit;
 class GraphicsBuffer;
 
 class UnitManager : public Trackable
@@ -18,7 +19,7 @@ class UnitManager : public Trackable
 
 		// a vector of all the units in the scene
 		std::vector <KinematicUnit*> mpUnits;
-		std::vector <KinematicUnit*> mpWalls;
+		std::vector <WallUnit*> mpWalls;
 
 		enum Mode { vel = 0, rad, ang };
 		Mode mCurrentMode;
@@ -31,10 +32,10 @@ class UnitManager : public Trackable
 		~UnitManager();
 
 		void AddUnit(KinematicUnit* uni, int AItype);
-		void AddUnit(KinematicUnit* uni);
+		void AddWallUnit(WallUnit* uni);
 		void RemoveRandomUnit();
 		KinematicUnit* GetUnit(int id);
-		KinematicUnit* GetWall(int id);
+		WallUnit* GetWall(int id);
 
 		void ChangeCurrentMode(int mode);
 		int GetCurrentMode();
