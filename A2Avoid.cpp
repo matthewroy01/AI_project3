@@ -12,13 +12,13 @@ A2Avoid::A2Avoid(KinematicUnit *pMover)
 
 Steering* A2Avoid::getSteering()
 {
-	for (int i = 1; i < GET_GAME->getUnitManager()->getNumberOfUnits(); i++)
+	for (int i = 1; i < gpGame->getUnitManager()->getNumberOfUnits(); i++)
 	{
-		if (getDistance(GET_GAME->getUnitManager()->GetUnit(i)) < 50 && mpMover != GET_GAME->getUnitManager()->GetUnit(i))
+		if (getDistance(gpGame->getUnitManager()->GetUnit(i)) < 50 && mpMover != gpGame->getUnitManager()->GetUnit(i))
 		{
  			// flee
 			std::cout << "avoid" << std::endl;
-			mLinear = mpMover->getPosition() - GET_GAME->getUnitManager()->GetUnit(i)->getPosition();
+			mLinear = mpMover->getPosition() - gpGame->getUnitManager()->GetUnit(i)->getPosition();
 
 			mLinear.normalize();
 			mLinear *= mpMover->getMaxVelocity();

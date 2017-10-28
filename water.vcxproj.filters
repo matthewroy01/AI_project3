@@ -121,6 +121,9 @@
     <ClCompile Include="A3GroupAllignment.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="A3Blend.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -241,6 +244,9 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="A3GroupAllignment.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="A3Blend.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
   </ItemGroup>

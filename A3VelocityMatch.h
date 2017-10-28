@@ -13,8 +13,11 @@ public:
 
 	virtual Steering* getSteering();
 
+	float getDistance(KinematicUnit* target);
+
 private:
 	KinematicUnit* mpMover;
+	Vector2D mAverageVelocity;
 };
 
 #endif
