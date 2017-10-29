@@ -54,6 +54,10 @@ Game::~Game()
 
 bool Game::init()
 {
+
+	// start random
+	srand(time(NULL));
+
 	mShouldExit = false;
 
 	//create Timers
@@ -176,13 +180,19 @@ bool Game::init()
 	
 	Vector2D pos2( 1000.0f, 500.0f );
 	Vector2D vel2( 0.0f, 0.0f );
-#if 0
-
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 3);
-#endif
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 
 	Vector2D pos3( 500.0f, 500.0f );
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 3);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 
 	return true;
 }

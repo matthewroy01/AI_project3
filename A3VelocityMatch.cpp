@@ -13,19 +13,24 @@ A3VelocityMatch::A3VelocityMatch(KinematicUnit* mover)
 Steering* A3VelocityMatch::getSteering()
 {
 	// code found on page 66-67 of the book
-	std::cout << "velocity match";
+	//std::cout << "velocity match" << std::endl;
 
 	float timeToTarget = 0.1f;
 
 	std::vector <KinematicUnit*> closeUnits;
 
 	// for all units, find the ones that are close enough to the mover and add them to the vector
-	for (int i = 0; i < gpGame->getUnitManager()->getNumberOfUnits(); i++)
+	for (int i = 1; i < gpGame->getUnitManager()->getNumberOfUnits(); i++)
 	{
-		if (getDistance(gpGame->getUnitManager()->GetUnit(i)) < 400)
+		if (getDistance(gpGame->getUnitManager()->GetUnit(i)) < 100)
 		{
 			closeUnits.push_back(gpGame->getUnitManager()->GetUnit(i));
 		}
+	}
+
+	if (closeUnits.size() > 1)
+	{
+		std::cout << "velocity match" << std::endl;
 	}
 
 	// add all velocities together

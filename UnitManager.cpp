@@ -86,6 +86,13 @@ void UnitManager::AddUnit(KinematicUnit* uni, int AItype)
 			mpUnits[mpUnits.size() - 1]->wanderAndFlee(GetUnit(0));
 			break;
 		}
+		case 5:
+		{
+			// flocking
+
+			mpUnits[mpUnits.size() - 1]->flock();
+			break;
+		}
 	}
 }
 

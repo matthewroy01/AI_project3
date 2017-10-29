@@ -3,16 +3,16 @@
 #include "UnitManager.h"
 #include "Game.h"
 
+#include "KinematicUnit.h"
+
 #include "A2Wander.h"
 #include "A3Cohesion.h"
 #include "A3GroupAllignment.h"
 #include "A3Separation.h"
 #include "A3VelocityMatch.h"
 
-A3Blend::A3Blend(KinematicUnit *pMover, KinematicUnit *pTarget, bool shouldFlee)
-	:mpMover(pMover),
-	mpTarget(pTarget),
-	mShouldFlee(shouldFlee)
+A3Blend::A3Blend(KinematicUnit *pMover)
+	:mpMover(pMover)
 {
 	mApplyDirectly = true;
 
@@ -48,6 +48,7 @@ Steering* A3Blend::getSteering()
 		(mpVelocityMatch->getLinear() * W_VELOCITY_MATCH) +
 		(mpWander->getLinear() * W_WANDER));
 
+	//std::cout << mpMover->getPosition().getX() << ", " << mpMover->getPosition().getY() << std::endl;
 	return this;
 }
 

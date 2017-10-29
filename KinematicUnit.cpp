@@ -12,6 +12,7 @@
 #include "A2Blend.h"
 #include "A2Wander.h"
 #include "A2SeekOrFlee.h"
+#include "A3Blend.h"
 #include "UnitManager.h"
 
 using namespace std;
@@ -139,4 +140,10 @@ void KinematicUnit::wanderAndFlee (KinematicUnit* pTarget)
 {
 	A2Blend* pA2Blend = new A2Blend(this, pTarget, true);
 	setSteering(pA2Blend);
+}
+
+void KinematicUnit::flock()
+{
+	A3Blend* pA3Blend = new A3Blend(this);
+	setSteering(pA3Blend);
 }

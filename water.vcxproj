@@ -21,6 +21,7 @@
     <ClInclude Include="A3GroupAllignment.h" />
     <ClInclude Include="A3Separation.h" />
     <ClInclude Include="A3VelocityMatch.h" />
+    <ClInclude Include="A3Wander.h" />
     <ClInclude Include="EndGameMessage.h" />
     <ClInclude Include="ToggleDisplayInfoMessage.h" />
     <ClInclude Include="ChangeModeMessage.h" />
@@ -62,6 +63,7 @@
     <ClCompile Include="A3Cohesion.cpp" />
     <ClCompile Include="A3GroupAllignment.cpp" />
     <ClCompile Include="A3Blend.cpp" />
+    <ClCompile Include="A3Wander.cpp" />
     <ClCompile Include="EndGameMessage.cpp" />
     <ClCompile Include="A3Separation.cpp" />
     <ClCompile Include="ToggleDisplayInfoMessage.cpp" />
