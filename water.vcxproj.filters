@@ -127,6 +127,9 @@
     <ClCompile Include="A3Wander.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="A3AvoidWalls.cpp">
+      <Filter>Source Files\Steering</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -253,6 +256,9 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="A3Wander.h">
+      <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="A3AvoidWalls.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
   </ItemGroup>

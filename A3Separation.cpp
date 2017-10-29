@@ -12,8 +12,6 @@ A3Separation::A3Separation(KinematicUnit* mover)
 
 Steering* A3Separation::getSteering()
 {
-	//std::cout << "separation" << std::endl;
-
 	std::vector <Vector2D> closePos;
 
 	// look at all Units and get the positions of the ones within a certain radius
@@ -27,7 +25,7 @@ Steering* A3Separation::getSteering()
 
 	if (closePos.size() > 1)
 	{
-		std::cout << "separation" << std::endl;
+		//std::cout << "separation" << std::endl;
 	}
 	
 	// calculate the average position

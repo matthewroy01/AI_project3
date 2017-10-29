@@ -24,7 +24,7 @@ const float WAS_MAX_WANDER_ROTATION = 1.0f;
 const float W_WANDER = 0.1;
 const float W_SEEKORFLEE = 0.6f;
 const float W_AVOID_COLLISION = 0.5f;
-const float W_AVOID_WALLS = 1.5f;
+const float W_AVOID_WALLS = 5.0f;
 const float W_COHESION = 1.0;
 const float W_GROUP_ALLIGNMENT = 0.0f;
 const float W_SEPARATION = 0.3f;
@@ -36,7 +36,7 @@ public:
 	//constructors and destructors
 	Steering( const Vector2D& theLinear = gZeroVector2D, float theAngular = 0.0f, bool applyDirectly = false ):mLinear(theLinear),mAngular(theAngular) {};
 	Steering( const Steering& rhs ):mLinear(rhs.mLinear), mAngular(rhs.mAngular), mApplyDirectly(rhs.mApplyDirectly){};
-	~Steering(){};
+	virtual ~Steering(){};
 
 	//accessors
 	const Vector2D& getLinear() const { return mLinear; };

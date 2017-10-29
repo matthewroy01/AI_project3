@@ -27,7 +27,7 @@ Steering* A3Cohesion::getSteering()
 
 	if (closePos.size() > 1)
 	{
-		std::cout << "separation" << std::endl;
+		//std::cout << "cohesion" << std::endl;
 	}
 
 	// calculate the average position

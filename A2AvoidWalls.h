@@ -18,7 +18,6 @@ private:
 	KinematicUnit* mpMover;
 
 	bool getBoxOnBox(WallUnit* target);
-	bool getRaycast(KinematicUnit* target);
 };
 
 #endif

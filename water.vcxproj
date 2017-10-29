@@ -16,6 +16,7 @@
     <ClInclude Include="A2Blend.h" />
     <ClInclude Include="A2SeekOrFlee.h" />
     <ClInclude Include="A2Wander.h" />
+    <ClInclude Include="A3AvoidWalls.h" />
     <ClInclude Include="A3Blend.h" />
     <ClInclude Include="A3Cohesion.h" />
     <ClInclude Include="A3GroupAllignment.h" />
@@ -60,6 +61,7 @@
     <ClCompile Include="A2Blend.cpp" />
     <ClCompile Include="A2SeekOrFlee.cpp" />
     <ClCompile Include="A2Wander.cpp" />
+    <ClCompile Include="A3AvoidWalls.cpp" />
     <ClCompile Include="A3Cohesion.cpp" />
     <ClCompile Include="A3GroupAllignment.cpp" />
     <ClCompile Include="A3Blend.cpp" />

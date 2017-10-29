@@ -8,6 +8,7 @@ class A3GroupAllignment;
 class A3Separation;
 class A3VelocityMatch;
 class A2Wander;
+class A3AvoidWalls;
 
 class KinematicUnit;
 
@@ -15,11 +16,9 @@ class A3Blend : public Steering
 {
 public:
 	A3Blend(KinematicUnit* pMover);
-	~A3Blend() { CleanUp(); };
+	~A3Blend();
 
 	virtual Steering* getSteering();
-	void Init();
-	void CleanUp();
 
 private:
 	KinematicUnit* mpMover;
@@ -29,6 +28,8 @@ private:
 	A3Separation* mpSeparation;
 	A3VelocityMatch* mpVelocityMatch;
 	A2Wander* mpWander;
+	A3AvoidWalls* mpAvoidWalls;
+	
 };
 
 #endif

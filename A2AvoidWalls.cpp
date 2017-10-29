@@ -41,30 +41,17 @@ Steering* A2AvoidWalls::getSteering()
 bool A2AvoidWalls::getBoxOnBox(WallUnit* target)
 {
 	if (
-		target->getTopLeft().getX() < mpMover->getPosition().getX() + mpMover->getWidth() &&
+		mpMover->getPosition().getX() > target->getTopLeft().getX() &&
+		mpMover->getPosition().getX() < target->getTopRight().getX() &&
+		mpMover->getPosition().getY() > target->getTopLeft().getY() &&
+		mpMover->getPosition().getY() < target->getBottomRight().getY()
+		)
+		/*target->getTopLeft().getX() < mpMover->getPosition().getX() + mpMover->getWidth() &&
 		target->getTopLeft().getX() + target->getWidth() > mpMover->getPosition().getX() &&
 		target->getTopLeft().getY() < mpMover->getPosition().getY() + mpMover->getHeight() &&
-		target->getTopLeft().getY() + target->getHeight() > mpMover->getPosition().getY())
+		target->getTopLeft().getY() + target->getHeight() > mpMover->getPosition().getY())*/
 	{
 		return true;
 	}
 	return false;
-}
-
-bool A2AvoidWalls::getRaycast(KinematicUnit* target)
-{
-	// calculate the ray using the first formula
-	Vector2D point = mpMover->getPosition();
-	float scalar = 100.0f;
-	Vector2D direction = mpMover->getVelocity();
-	// there isn't an overload for multiplying a scalar for a vector and I've had little success so here it is manually
-	Vector2D scalarTimesDirection = Vector2D(direction.getX() * scalar, direction.getY() * scalar);
-
-	// the result of the first formula
-	Vector2D raycast = point + scalarTimesDirection;
-
-	// calculate the line of the box (?) using the second formula
-	GET_GAME->getUnitManager()->GetWall(0);
-
-	return true;
 }

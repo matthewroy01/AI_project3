@@ -167,32 +167,32 @@ bool Game::init()
 
 	mpUnitManager = new UnitManager();
 
-	//setup walls
+	// the four walls
 	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, 0), Vector2D(mpGraphicsSystem->getWidth(), WALL_THICKNESS)));
 	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, 0), Vector2D(WALL_THICKNESS, mpGraphicsSystem->getHeight())));
 	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(mpGraphicsSystem->getWidth() - WALL_THICKNESS, 0), Vector2D(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight())));
-	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, mpGraphicsSystem->getHeight() - WALL_THICKNESS), Vector2D(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight() - WALL_THICKNESS)));
+	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, mpGraphicsSystem->getHeight() - WALL_THICKNESS), Vector2D(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight())));
 
-	//setup units
-	Vector2D pos( 0.0f, 0.0f );
+	// the player
+	Vector2D pos1( 0.0f, 0.0f );
 	Vector2D vel( 0.0f, 0.0f );
-	mpUnitManager->AddUnit(new KinematicUnit(pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f, CHARACTER_SIDE, CHARACTER_SIDE), 0);
+	mpUnitManager->AddUnit(new KinematicUnit(pArrowSprite, pos1, 1, vel, 0.0f, 200.0f, 10.0f, CHARACTER_SIDE, CHARACTER_SIDE), 0);
 	
-	Vector2D pos2( 1000.0f, 500.0f );
-	Vector2D vel2( 0.0f, 0.0f );
+	// the five units to spawn at the start of the program
+	Vector2D pos2(mpGraphicsSystem->getWidth() / 2, mpGraphicsSystem->getHeight() / 2);
+	Vector2D vel2(0, 0);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 
-	Vector2D pos3( 500.0f, 500.0f );
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos3, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	// five more
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 
 	return true;
 }
