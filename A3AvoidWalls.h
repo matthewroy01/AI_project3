@@ -6,6 +6,10 @@
 class KinematicUnit;
 class WallUnit;
 
+const float POINT_DIST = 200;
+const float DECAY_COEF_AW = 2.0f;
+const float ESCAPE_STRENGTH = 150.0f;
+
 class A3AvoidWalls : public Steering
 {
 public:
@@ -14,10 +18,15 @@ public:
 
 	virtual Steering* getSteering();
 
+	Vector2D getRaycast(WallUnit* target);
+	float getDistance(Vector2D target);
+
 private:
 	KinematicUnit* mpMover;
 
-	bool getRaycast(WallUnit* target);
+	Vector2D mPoint;
+
+	bool mPointFound;
 };
 
 #endif

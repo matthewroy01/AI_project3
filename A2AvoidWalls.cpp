@@ -14,27 +14,27 @@ A2AvoidWalls::A2AvoidWalls(KinematicUnit *pMover)
 
 Steering* A2AvoidWalls::getSteering()
 {
-	for (int i = 0; i < gpGame->getUnitManager()->getNumberOfWalls(); i++)
-	{
-		// check for the collision type to see if any steering should be applied
-		if (getBoxOnBox(gpGame->getUnitManager()->GetWall(i)))
-		{
-			// flee
-			std::cout << "avoid wall" << std::endl;
-			mLinear = Vector2D(gpGame->getGraphicsSystem()->getWidth() / 2, gpGame->getGraphicsSystem()->getHeight() / 2) - mpMover->getPosition();
+	//for (int i = 0; i < gpGame->getUnitManager()->getNumberOfWalls(); i++)
+	//{
+	//	// check for the collision type to see if any steering should be applied
+	//	if (getBoxOnBox(gpGame->getUnitManager()->GetWall(i)))
+	//	{
+	//		// flee
+	//		std::cout << "avoid wall" << std::endl;
+	//		mLinear = Vector2D(gpGame->getGraphicsSystem()->getWidth() / 2, gpGame->getGraphicsSystem()->getHeight() / 2) - mpMover->getPosition();
 
-			mLinear.normalize();
-			mLinear *= mpMover->getMaxVelocity();
+	//		mLinear.normalize();
+	//		mLinear *= mpMover->getMaxVelocity();
 
-			mpMover->setNewOrientation();
-			mAngular = mpMover->getOrientation();
+	//		mpMover->setNewOrientation();
+	//		mAngular = mpMover->getOrientation();
 
-			return this;
-		}
-	}
+	//		return this;
+	//	}
+	//}
 
-	mLinear = Vector2D(0, 0);
-	mAngular = 0;
+	//mLinear = Vector2D(0, 0);
+	//mAngular = 0;
 	return this;
 }
 
