@@ -22,7 +22,6 @@
     <ClInclude Include="A3GroupAllignment.h" />
     <ClInclude Include="A3Separation.h" />
     <ClInclude Include="A3VelocityMatch.h" />
-    <ClInclude Include="A3Wander.h" />
     <ClInclude Include="EndGameMessage.h" />
     <ClInclude Include="SaveValuesMessage.h" />
     <ClInclude Include="ToggleDisplayInfoMessage.h" />
@@ -55,7 +54,6 @@
     <ClInclude Include="UnitDeleteRandomMessage.h" />
     <ClInclude Include="UnitManager.h" />
     <ClInclude Include="WallUnit.h" />
-    <ClInclude Include="WanderAndSeek.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="A2Avoid.cpp" />
@@ -67,7 +65,6 @@
     <ClCompile Include="A3Cohesion.cpp" />
     <ClCompile Include="A3GroupAllignment.cpp" />
     <ClCompile Include="A3Blend.cpp" />
-    <ClCompile Include="A3Wander.cpp" />
     <ClCompile Include="EndGameMessage.cpp" />
     <ClCompile Include="A3Separation.cpp" />
     <ClCompile Include="SaveValuesMessage.cpp" />
@@ -102,7 +99,6 @@
     <ClCompile Include="UnitManager.cpp" />
     <ClCompile Include="A3VelocityMatch.cpp" />
     <ClCompile Include="WallUnit.cpp" />
-    <ClCompile Include="WanderAndSeek.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{07ED8114-0659-4424-9468-50DBBEA5882A}</ProjectGuid>

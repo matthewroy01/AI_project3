@@ -60,12 +60,8 @@ void UIManager::doUI()
 	//write text at mouse position
 	al_draw_text(mpFont, al_map_rgb(255, 255, 255), tmpX, tmpY, ALLEGRO_ALIGN_CENTRE, tmpStr.c_str());
 
-	if (mShouldDisplayInfo)
-	{
-		// mode
-		tmpStr = (std::string)"Mode: " + std::to_string(GET_GAME->getUnitManager()->GetCurrentMode());
-		al_draw_text(mpFont, al_map_rgb(255, 255, 255), 10, 10, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
-
+	//if (mShouldDisplayInfo)
+	//{
 		// cohesion
 		tmpStr = (std::string)"Cohesion: " + GET_GAME->getUnitManager()->getAllCohesion();
 		if (GET_GAME->getUnitManager()->GetCurrentMode() == 0)
@@ -98,5 +94,15 @@ void UIManager::doUI()
 		{
 			al_draw_text(mpFont, al_map_rgb(255, 255, 255), 10, 85, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
 		}
-	}
+
+		// controls
+		// controls can be toggled on and off via the InputManager
+		if (mShouldDisplayInfo)
+		{
+			tmpStr = "[I]: spawn boids  -  [D]: delete boids/quit  -  [+][-]: increase/decrease value";
+			al_draw_text(mpFont, al_map_rgb(255, 255, 255), GET_GAME->getGraphicsSystem()->getWidth() / 2, GET_GAME->getGraphicsSystem()->getHeight() - 50, ALLEGRO_ALIGN_CENTER, tmpStr.c_str());
+			tmpStr = "[C][S][A]: change mode  -  [CTRL-S]: save values  -  [?]: toggle controls";
+			al_draw_text(mpFont, al_map_rgb(255, 255, 255), GET_GAME->getGraphicsSystem()->getWidth() / 2, GET_GAME->getGraphicsSystem()->getHeight() - 30, ALLEGRO_ALIGN_CENTER, tmpStr.c_str());
+		}
+	//}
 }

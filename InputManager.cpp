@@ -144,6 +144,15 @@ void InputManager::Update()
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
+	//if '?' toggle controls
+	if (al_key_down(&keyState, ALLEGRO_KEY_SLASH) && !mTOGGLEdown)
+	{
+		mTOGGLEdown = true;
+
+		GameMessage* pMessage = new ToggleDisplayInfoMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
 	/*//left mouse click
 	al_get_mouse_state(&mouseState);
 	if (al_mouse_button_down(&mouseState, 1))
@@ -210,6 +219,7 @@ void InputManager::Update()
 	if (!al_key_down(&keyState, ALLEGRO_KEY_EQUALS)) { mPlusdown = false; }
 	if (!al_key_down(&keyState, ALLEGRO_KEY_MINUS)) { mMinusdown = false; }
 	if (!al_key_down(&keyState, ALLEGRO_KEY_LCTRL)) { mCTRLdown = false; }
+	if (!al_key_down(&keyState, ALLEGRO_KEY_SLASH)) { mTOGGLEdown = false; }
 	//if (!al_key_down(&keyState, ALLEGRO_KEY_F)) { mFdown = false; }
 	//if (!al_key_down(&keyState, ALLEGRO_KEY_V)) { mVdown = false; }
 	//if (!al_key_down(&keyState, ALLEGRO_KEY_R)) { mRdown = false; }

@@ -207,9 +207,9 @@ bool Game::init()
 	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, mpGraphicsSystem->getHeight() - WALL_THICKNESS), Vector2D(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight())));
 
 	// the player
-	Vector2D pos1( -100.0f, -100.0f );
+	Vector2D pos( -100.0f, -100.0f );
 	Vector2D vel( 0.0f, 0.0f );
-	mpUnitManager->AddUnit(new KinematicUnit(pArrowSprite, pos1, 1, vel, 0.0f, 200.0f, 10.0f, CHARACTER_SIDE, CHARACTER_SIDE), 0);
+	mpUnitManager->AddUnit(new KinematicUnit(pArrowSprite, pos, 1, vel, 0.0f, 200.0f, 10.0f, CHARACTER_SIDE, CHARACTER_SIDE), 0);
 
 	return true;
 }

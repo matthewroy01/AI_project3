@@ -9,5 +9,6 @@ A3GroupAllignment::A3GroupAllignment(KinematicUnit* mover)
 
 Steering* A3GroupAllignment::getSteering()
 {
+	// velocity matching handles this already because the boids always face in the direction of their velocity
 	return this;
 }

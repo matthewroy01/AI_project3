@@ -64,9 +64,6 @@
     <ClCompile Include="UnitDeleteRandomMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
-    <ClCompile Include="WanderAndSeek.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Util</Filter>
     </ClCompile>
@@ -122,9 +119,6 @@
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
     <ClCompile Include="A3Blend.cpp">
-      <Filter>Source Files\Steering</Filter>
-    </ClCompile>
-    <ClCompile Include="A3Wander.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
     <ClCompile Include="A3AvoidWalls.cpp">
@@ -201,9 +195,6 @@
     <ClInclude Include="UnitDeleteRandomMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
-    <ClInclude Include="WanderAndSeek.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\Util</Filter>
     </ClInclude>
@@ -259,9 +250,6 @@
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="A3Blend.h">
-      <Filter>Header Files\Steering</Filter>
-    </ClInclude>
-    <ClInclude Include="A3Wander.h">
       <Filter>Header Files\Steering</Filter>
     </ClInclude>
     <ClInclude Include="A3AvoidWalls.h">

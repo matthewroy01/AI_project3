@@ -60,8 +60,10 @@ Vector2D A3AvoidWalls::getRaycast(WallUnit* target)
 	mPoint = mpMover->getOrientationAsVector();
 	mPoint.normalize();
 	mPoint *= POINT_DIST;
-
-	// code from Calum, who showed me a tutorial for this but he lost the link
+	
+	/*-----------------------------------------------------------------------------------------*/
+	// code from Calum with permission, who showed me a tutorial for this but he lost the link
+	/*-----------------------------------------------------------------------------------------*/
 	{
 		// the end point of the array
 		float endOfRay[4] = { -mPoint.getX(), mPoint.getX(), -mPoint.getY(), mPoint.getY() };

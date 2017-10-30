@@ -12,7 +12,7 @@ A3Cohesion::A3Cohesion(KinematicUnit* mover)
 
 Steering* A3Cohesion::getSteering()
 {
-	//std::cout << "cohesion" << std::endl;
+	// code found on page 82-83 of the book
 
 	std::vector <Vector2D> closePos;
 

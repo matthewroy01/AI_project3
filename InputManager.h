@@ -22,7 +22,7 @@ class InputManager : public Trackable
 		// assignment 2
 		//bool mSdown, mFdown, mDdown, mIdown, mPlusdown, mMinusdown, mVdown, mRdown, mAdown;
 		//assignment 3
-		bool mCdown, mSdown, mAdown, mCTRLdown, mIdown, mDdown, mMinusdown, mPlusdown;
+		bool mCdown, mSdown, mAdown, mCTRLdown, mIdown, mDdown, mMinusdown, mPlusdown, mTOGGLEdown;
 
 		// mouse and keyboard state
 		ALLEGRO_MOUSE_STATE mouseState;
