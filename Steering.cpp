@@ -17,3 +17,57 @@ Steering* Steering::operator+=(Steering* add)
 
 	return tmp;
 }
+
+void Steering::changeWeight(int mode, float amount, bool add)
+{
+	if (add)
+	{
+		switch (mode)
+		{
+			case 0:
+			{
+				W_COHESION += amount;
+				break;
+			}
+			case 1:
+			{
+				W_SEPARATION += amount;
+				break;
+			}
+			case 2:
+			{
+				W_VELOCITY_MATCH += amount;
+				break;
+			}
+			default:
+			{
+				std::cout << mode << " is not a valid mode number." << std::endl;
+			}
+		}
+	}
+	else
+	{
+		switch (mode)
+		{
+			case 0:
+			{
+				W_COHESION -= amount;
+				break;
+			}
+			case 1:
+			{
+				W_SEPARATION -= amount;
+				break;
+			}
+			case 2:
+			{
+				W_VELOCITY_MATCH -= amount;
+				break;
+			}
+			default:
+			{
+				std::cout << mode << " is not a valid mode number." << std::endl;
+			}
+		}
+	}
+}

@@ -12,10 +12,15 @@ class GraphicsBuffer;
 class UnitManager : public Trackable
 {
 	private :
-		// constants for changing values in modes
+		// constants for changing values in modes (assignment 2)
 		const int ALL_VELOCITY_CONST = 20;
 		const float ALL_ANGULAR_CONST = 0.25f;
 		const int ALL_RADIUS_CONST = 20;
+
+		// constants for changing values in modes (assignment 3)
+		const float ALL_COHESION_CONST = 0.1f;
+		const float ALL_SEPARATION_CONST = 0.1f;
+		const float ALL_ALLIGNMENT_CONST = 0.1f;
 
 		// a vector of all the units in the scene
 		std::vector <KinematicUnit*> mpUnits;
@@ -24,8 +29,11 @@ class UnitManager : public Trackable
 		enum Mode { vel = 0, rad, ang };
 		Mode mCurrentMode;
 
-		// for changing modes, all of these variables will be consistent between all units
+		// for changing modes, all of these variables will be consistent between all units (assignment 2)
 		float mAllMaxVelocity, mAllRadius, mAllAngularVelocity;
+
+		// for changing modes, all of these variables will be consistent between all units (assignment 3)
+		float mAllWeightCohesion, mAllWeightSeparation, mAllWeightAllignment;
 
 	public :
 		UnitManager();
@@ -43,7 +51,10 @@ class UnitManager : public Trackable
 		void UnitUpdate(float t);
 		void UnitDraw(GraphicsBuffer* buffer);
 
-		// accessors and mutators for mode values
+		int getNumberOfUnits() { return mpUnits.size(); };
+		int getNumberOfWalls() { return mpWalls.size(); };
+
+		// accessors and mutators for mode values (assignment 2)
 		void changeAllVelocity(bool add);
 		void changeAllAngular(bool add);
 		void changeAllRadius(bool add);
@@ -52,8 +63,14 @@ class UnitManager : public Trackable
 		float getAllAngular() { return mAllAngularVelocity; };
 		float getAllRadius() { return mAllRadius; };
 
-		int getNumberOfUnits() { return mpUnits.size(); };
-		int getNumberOfWalls() { return mpWalls.size(); };
+		float getAllCohesion();
+		float getAllSeparation();
+		float getAllAllignment();
+
+		// accessors and mutators for mode values (assignment 3)
+		void changeWeightCohesion(bool add);
+		void changeWeightSeparation(bool add);
+		void changeWeightAllignment(bool add);
 };
 
 #endif

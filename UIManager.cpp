@@ -62,11 +62,41 @@ void UIManager::doUI()
 
 	if (mShouldDisplayInfo)
 	{
-		// modes
-		tmpStr = (std::string)"Mode: " + std::to_string(GET_GAME->getUnitManager()->GetCurrentMode()) + " : " +
-			(std::string)"Vel " + std::to_string((int)GET_GAME->getUnitManager()->getAllVelocity()) + " : " +
-			(std::string)"Rad " + std::to_string((int)GET_GAME->getUnitManager()->getAllRadius()) + " : " +
-			(std::string)"Ang " + std::to_string(GET_GAME->getUnitManager()->getAllAngular());
+		// mode
+		tmpStr = (std::string)"Mode: " + std::to_string(GET_GAME->getUnitManager()->GetCurrentMode());
 		al_draw_text(mpFont, al_map_rgb(255, 255, 255), 10, 10, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
+
+		// cohesion
+		tmpStr = (std::string)"Cohesion: " + std::to_string(GET_GAME->getUnitManager()->getAllCohesion());
+		if (GET_GAME->getUnitManager()->GetCurrentMode() == 0)
+		{
+			al_draw_text(mpFont, al_map_rgb(255, 0, 0), 10, 35, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
+		}
+		else
+		{
+			al_draw_text(mpFont, al_map_rgb(255, 255, 255), 10, 35, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
+		}
+
+		// separation
+		tmpStr = (std::string)"Separation: " + std::to_string(GET_GAME->getUnitManager()->getAllSeparation());
+		if (GET_GAME->getUnitManager()->GetCurrentMode() == 1)
+		{
+			al_draw_text(mpFont, al_map_rgb(255, 0, 0), 10, 60, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
+		}
+		else
+		{
+			al_draw_text(mpFont, al_map_rgb(255, 255, 255), 10, 60, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
+		}
+
+		// allignment
+		tmpStr = (std::string)"Allignment: " + std::to_string(GET_GAME->getUnitManager()->getAllAllignment());
+		if (GET_GAME->getUnitManager()->GetCurrentMode() == 2)
+		{
+			al_draw_text(mpFont, al_map_rgb(255, 0, 0), 10, 85, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
+		}
+		else
+		{
+			al_draw_text(mpFont, al_map_rgb(255, 255, 255), 10, 85, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
+		}
 	}
 }

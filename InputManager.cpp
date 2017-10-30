@@ -15,10 +15,11 @@
 #include "ChangeModeValueMessage.h"
 #include "ChangeModeMessage.h"
 #include "ToggleDisplayInfoMessage.h"
+#include "UnitCreateFiveBoidsMessage.h"
 
 InputManager::InputManager()
 {
-	mSdown = false;
+	/*mSdown = false;
 	mFdown = false;
 	mDdown = false;
 	mIdown = false;
@@ -26,7 +27,12 @@ InputManager::InputManager()
 	mMinusdown = false;
 	mVdown = false;
 	mRdown = false;
+	mAdown = false;*/
+
+	mCdown = false;
+	mSdown = false;
 	mAdown = false;
+	mCTRLdown = false;
 
 	if (!init())
 	{
@@ -58,15 +64,6 @@ bool InputManager::init()
 
 void InputManager::Update()
 {
-	//left mouse click
-	al_get_mouse_state(&mouseState);
-	if (al_mouse_button_down(&mouseState, 1))
-	{
-		Vector2D pos(mouseState.x, mouseState.y);
-		GameMessage* pMessage = new PlayerMoveToMessage(pos);
-		MESSAGE_MANAGER->addMessage(pMessage, 0);
-	}
-
 	//get current keyboard state
 	al_get_keyboard_state(&keyState);
 
@@ -76,19 +73,35 @@ void InputManager::Update()
 		GET_GAME->setShouldExit(true);
 	}
 
-	//if 's' key is pressed create a unit that WANDERS and SEEKS
-	if (al_key_down(&keyState, ALLEGRO_KEY_S) && !mSdown)
+	//if 'c' key is pressed, change current mode to "cohesion"
+	if (al_key_down(&keyState, ALLEGRO_KEY_C) && !mCdown)
 	{
-		mSdown = true;
-		GameMessage* pMessage = new UnitCreateWanderSOFMessage(false);
+		mCdown = true;
+		GameMessage* pMessage = new ChangeModeMessage(0);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
-	//if 'f' key is pressed create a unit that WANDERS and FLEES
-	if (al_key_down(&keyState, ALLEGRO_KEY_F) && !mFdown)
+	//if 's' key is pressed, change current mode to "separation"
+	if (al_key_down(&keyState, ALLEGRO_KEY_S) && !mSdown)
 	{
-		mFdown = true;
-		GameMessage* pMessage = new UnitCreateWanderSOFMessage(true);
+		mSdown = true;
+		GameMessage* pMessage = new ChangeModeMessage(1);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
+	//if 'a' key is pressed, change current mode to "allignment"
+	if (al_key_down(&keyState, ALLEGRO_KEY_A) && !mAdown)
+	{
+		mAdown = true;
+		GameMessage* pMessage = new ChangeModeMessage(2);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
+	//if 'i' key is pressed, spawn 5 boids
+	if (al_key_down(&keyState, ALLEGRO_KEY_I) && !mIdown)
+	{
+		mIdown = true;
+		GameMessage* pMessage = new UnitCreateFiveBoidsMessage();
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
@@ -97,14 +110,6 @@ void InputManager::Update()
 	{
 		mDdown = true;
 		GameMessage* pMessage = new UnitDeleteRandomMessage();
-		MESSAGE_MANAGER->addMessage(pMessage, 0);
-	}
-
-	//if 'i' key is pressed toggle the info
-	if (al_key_down(&keyState, ALLEGRO_KEY_I) && !mIdown)
-	{
-		mIdown = true;
-		GameMessage* pMessage = new ToggleDisplayInfoMessage();
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
@@ -128,7 +133,40 @@ void InputManager::Update()
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 
-	//if 'v' key is pressed select velocity
+	/*//left mouse click
+	al_get_mouse_state(&mouseState);
+	if (al_mouse_button_down(&mouseState, 1))
+	{
+	Vector2D pos(mouseState.x, mouseState.y);
+	GameMessage* pMessage = new PlayerMoveToMessage(pos);
+	MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}*/
+
+	/*//if 's' key is pressed create a unit that WANDERS and SEEKS
+	if (al_key_down(&keyState, ALLEGRO_KEY_S) && !mSdown)
+	{
+		mSdown = true;
+		GameMessage* pMessage = new UnitCreateWanderSOFMessage(false);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
+	//if 'f' key is pressed create a unit that WANDERS and FLEES
+	if (al_key_down(&keyState, ALLEGRO_KEY_F) && !mFdown)
+	{
+		mFdown = true;
+		GameMessage* pMessage = new UnitCreateWanderSOFMessage(true);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}*/
+
+	/*//if 'i' key is pressed toggle the info
+	if (al_key_down(&keyState, ALLEGRO_KEY_I) && !mIdown)
+	{
+		mIdown = true;
+		GameMessage* pMessage = new ToggleDisplayInfoMessage();
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}*/
+
+	/*//if 'v' key is pressed select velocity
 	if (al_key_down(&keyState, ALLEGRO_KEY_V) && !mVdown)
 	{
 		mVdown = true;
@@ -150,18 +188,20 @@ void InputManager::Update()
 		mAdown = true;
 		GameMessage* pMessage = new ChangeModeMessage(2);
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
-	}
+	}*/
 
 	// check to see if you're still pressing the button so you can't create or delete a unit by just holding the key
+	if (!al_key_down(&keyState, ALLEGRO_KEY_C)) { mCdown = false; }
 	if (!al_key_down(&keyState, ALLEGRO_KEY_S)) { mSdown = false; }
-	if (!al_key_down(&keyState, ALLEGRO_KEY_F)) { mFdown = false; }
-	if (!al_key_down(&keyState, ALLEGRO_KEY_D)) { mDdown = false; }
+	if (!al_key_down(&keyState, ALLEGRO_KEY_A)) { mAdown = false; }
 	if (!al_key_down(&keyState, ALLEGRO_KEY_I)) { mIdown = false; }
+	if (!al_key_down(&keyState, ALLEGRO_KEY_D)) { mDdown = false; }
 	if (!al_key_down(&keyState, ALLEGRO_KEY_EQUALS)) { mPlusdown = false; }
 	if (!al_key_down(&keyState, ALLEGRO_KEY_MINUS)) { mMinusdown = false; }
-	if (!al_key_down(&keyState, ALLEGRO_KEY_V)) { mVdown = false; }
-	if (!al_key_down(&keyState, ALLEGRO_KEY_R)) { mRdown = false; }
-	if (!al_key_down(&keyState, ALLEGRO_KEY_A)) { mAdown = false; }
+	if (!al_key_down(&keyState, ALLEGRO_KEY_LCTRL)) { mCTRLdown = false; }
+	//if (!al_key_down(&keyState, ALLEGRO_KEY_F)) { mFdown = false; }
+	//if (!al_key_down(&keyState, ALLEGRO_KEY_V)) { mVdown = false; }
+	//if (!al_key_down(&keyState, ALLEGRO_KEY_R)) { mRdown = false; }
 }
 
 Vector2D InputManager::getInputMousePos()

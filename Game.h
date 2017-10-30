@@ -72,6 +72,7 @@ public:
 	void createSeekUnit();
 	void createWanderSOFUnit(bool shouldFlee);
 	void deleteRandomUnit();
+	void createFiveBoids();
 
 	// for setting up initial values for modes
 	float getAllVelocity() { return ALL_MAX_VELOCITY; };

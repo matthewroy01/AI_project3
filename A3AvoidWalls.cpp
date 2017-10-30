@@ -17,7 +17,7 @@ A3AvoidWalls::A3AvoidWalls(KinematicUnit *pMover)
 
 Steering* A3AvoidWalls::getSteering()
 {
-	for (int i = 0; i < gpGame->getUnitManager()->getNumberOfWalls(); i++)
+	/*for (int i = 0; i < gpGame->getUnitManager()->getNumberOfWalls(); i++)
 	{
 		// do the raycast and return the point of collision
 		Vector2D colPoint = getRaycast(gpGame->getUnitManager()->GetWall(i));
@@ -50,7 +50,7 @@ Steering* A3AvoidWalls::getSteering()
 	}
 
 	mLinear.normalize();
-	mLinear *= mpMover->getMaxVelocity();
+	mLinear *= mpMover->getMaxVelocity();*/
 
 	return this;
 }

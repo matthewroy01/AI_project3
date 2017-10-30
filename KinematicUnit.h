@@ -52,13 +52,22 @@ public:
 	void wanderAndFlee( KinematicUnit* pTarget );
 	void flock();
 
-	// for modes
+	// for modes (assignment 2)
 	int getTargetRadius() { return mTargetRadius; };
 	float getAngularVelocity() { return mAngularVelocity; };
 
 	// for collision
 	int getHeight() { return mHeight; };
 	int getWidth() { return mWidth; };
+
+	// for modes (assignment 3)
+	void changeCohesion(bool add);
+	void changeSeparation(bool add);
+	void changeAllignment(bool add);
+
+	float getCohesion() { return mpCurrentSteering->W_COHESION; }
+	float getSeparation() { return mpCurrentSteering->W_SEPARATION; }
+	float getAllignment() { return mpCurrentSteering->W_VELOCITY_MATCH; }
 
 private:
 	Sprite* mpSprite;

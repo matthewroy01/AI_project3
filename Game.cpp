@@ -174,25 +174,9 @@ bool Game::init()
 	mpUnitManager->AddWallUnit(new WallUnit(Vector2D(0, mpGraphicsSystem->getHeight() - WALL_THICKNESS), Vector2D(mpGraphicsSystem->getWidth(), mpGraphicsSystem->getHeight())));
 
 	// the player
-	Vector2D pos1( 0.0f, 0.0f );
+	Vector2D pos1( -100.0f, -100.0f );
 	Vector2D vel( 0.0f, 0.0f );
 	mpUnitManager->AddUnit(new KinematicUnit(pArrowSprite, pos1, 1, vel, 0.0f, 200.0f, 10.0f, CHARACTER_SIDE, CHARACTER_SIDE), 0);
-	
-	// the five units to spawn at the start of the program
-	Vector2D pos2(mpGraphicsSystem->getWidth() / 2, mpGraphicsSystem->getHeight() / 2);
-	Vector2D vel2(0, 0);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-
-	// five more
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
-	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos2, 1, vel2, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 
 	return true;
 }
@@ -332,4 +316,17 @@ void Game::deleteRandomUnit()
 {
 	// calls the unit manager to delete a random unit
 	mpUnitManager->RemoveRandomUnit();
+}
+
+void Game::createFiveBoids()
+{
+	Vector2D pos = (mpGraphicsSystem->getWidth() / 2, mpGraphicsSystem->getHeight() / 2);
+	Vector2D vel = (0, 0);
+
+	// add 5 boids
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos, 1, vel, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos, 1, vel, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos, 1, vel, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos, 1, vel, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos, 1, vel, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 }

@@ -48,6 +48,7 @@
     <ClInclude Include="Steering.h" />
     <ClInclude Include="UIManager.h" />
     <ClInclude Include="UnitCreateArriveMessage.h" />
+    <ClInclude Include="UnitCreateFiveBoidsMessage.h" />
     <ClInclude Include="UnitCreateSeekMessage.h" />
     <ClInclude Include="UnitCreateWanderSOFMessage.h" />
     <ClInclude Include="UnitDeleteRandomMessage.h" />
@@ -92,6 +93,7 @@
     <ClCompile Include="Steering.cpp" />
     <ClCompile Include="UIManager.cpp" />
     <ClCompile Include="UnitCreateArriveMessage.cpp" />
+    <ClCompile Include="UnitCreateFiveBoidsMessage.cpp" />
     <ClCompile Include="UnitCreateSeekMessage.cpp" />
     <ClCompile Include="UnitCreateWanderSOFMessage.cpp" />
     <ClCompile Include="UnitDeleteRandomMessage.cpp" />

@@ -25,10 +25,10 @@ const float W_WANDER = 0.1;
 const float W_SEEKORFLEE = 0.6f;
 const float W_AVOID_COLLISION = 0.5f;
 const float W_AVOID_WALLS = 2.0f;
-const float W_COHESION = 1.0;
+//const float W_COHESION = 1.0;
 const float W_GROUP_ALLIGNMENT = 0.0f;
-const float W_SEPARATION = 0.3f;
-const float W_VELOCITY_MATCH = 1.5f;
+//const float W_SEPARATION = 0.3f;
+//const float W_VELOCITY_MATCH = 1.5f;
 
 class Steering: public Trackable
 {
@@ -50,8 +50,16 @@ public:
 	Steering* operator+=(Steering* add);
 	Steering* operator*(float left);
 
+	void changeWeight(int mode, float amount, bool add);
+
+	// some weights are here so they can be changed
+	float W_COHESION = 1.0f;
+	float W_SEPARATION = 0.3f;
+	float W_VELOCITY_MATCH = 1.5f;
+
 protected:
 	Vector2D mLinear;//linear velocity
 	float mAngular;//angular velocity
 	bool mApplyDirectly;
+	
 };

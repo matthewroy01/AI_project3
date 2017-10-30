@@ -130,6 +130,9 @@
     <ClCompile Include="A3AvoidWalls.cpp">
       <Filter>Source Files\Steering</Filter>
     </ClCompile>
+    <ClCompile Include="UnitCreateFiveBoidsMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -260,6 +263,9 @@
     </ClInclude>
     <ClInclude Include="A3AvoidWalls.h">
       <Filter>Header Files\Steering</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitCreateFiveBoidsMessage.h">
+      <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

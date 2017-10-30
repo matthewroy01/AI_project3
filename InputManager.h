@@ -20,7 +20,9 @@ class InputManager : public Trackable
 	private :
 		// bools that keep track of whether or not a key is still being pressed (sort of a way to cheat in "al_key_up")
 		// assignment 2
-		bool mSdown, mFdown, mDdown, mIdown, mPlusdown, mMinusdown, mVdown, mRdown, mAdown;
+		//bool mSdown, mFdown, mDdown, mIdown, mPlusdown, mMinusdown, mVdown, mRdown, mAdown;
+		//assignment 3
+		bool mCdown, mSdown, mAdown, mCTRLdown, mIdown, mDdown, mMinusdown, mPlusdown;
 
 		// mouse and keyboard state
 		ALLEGRO_MOUSE_STATE mouseState;

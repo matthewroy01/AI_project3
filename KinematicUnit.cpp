@@ -147,3 +147,18 @@ void KinematicUnit::flock()
 	A3Blend* pA3Blend = new A3Blend(this);
 	setSteering(pA3Blend);
 }
+
+void KinematicUnit::changeCohesion(bool add)
+{
+	mpCurrentSteering->changeWeight(0, 0.1f, add);
+}
+
+void KinematicUnit::changeSeparation(bool add)
+{
+	mpCurrentSteering->changeWeight(1, 0.1f, add);
+}
+
+void KinematicUnit::changeAllignment(bool add)
+{
+	mpCurrentSteering->changeWeight(2, 0.1f, add);
+}

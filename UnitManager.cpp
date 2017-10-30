@@ -219,7 +219,7 @@ int UnitManager::GetCurrentMode()
 	return mCurrentMode;
 }
 
-// these functions tell all units to change their values
+// these functions tell all units to change their values (assignment 2)
 void UnitManager::changeAllVelocity(bool add)
 {
 	if (add)
@@ -253,5 +253,63 @@ void UnitManager::changeAllRadius(bool add)
 	else
 	{
 		mAllRadius -= ALL_RADIUS_CONST;
+	}
+}
+
+// these functions tell all units to change their values (assignment 3)
+void UnitManager::changeWeightCohesion(bool add)
+{
+	if (mpUnits.size() > 1)
+	{
+		for (unsigned int i = 1; i < mpUnits.size(); i++)
+		{
+			mpUnits[i]->changeCohesion(add);
+		}
+	}
+}
+
+void UnitManager::changeWeightSeparation(bool add)
+{
+	if (mpUnits.size() > 1)
+	{
+		for (unsigned int i = 1; i < mpUnits.size(); i++)
+		{
+			mpUnits[i]->changeSeparation(add);
+		}
+	}
+}
+
+void UnitManager::changeWeightAllignment(bool add)
+{
+	if (mpUnits.size() > 1)
+	{
+		for (unsigned int i = 1; i < mpUnits.size(); i++)
+		{
+			mpUnits[i]->changeAllignment(add);
+		}
+	}
+}
+
+float UnitManager::getAllCohesion()
+{
+	if (mpUnits.size() > 1)
+	{
+		return mpUnits[1]->getCohesion();
+	}
+}
+
+float UnitManager::getAllSeparation()
+{
+	if (mpUnits.size() > 1)
+	{
+		return mpUnits[1]->getSeparation();
+	}
+}
+
+float UnitManager::getAllAllignment()
+{
+	if (mpUnits.size() > 1)
+	{
+		return mpUnits[1]->getAllignment();
 	}
 }
