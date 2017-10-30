@@ -256,60 +256,29 @@ void UnitManager::changeAllRadius(bool add)
 	}
 }
 
-// these functions tell all units to change their values (assignment 3)
-void UnitManager::changeWeightCohesion(bool add)
+std::string UnitManager::getAllCohesion()
 {
 	if (mpUnits.size() > 1)
 	{
-		for (unsigned int i = 1; i < mpUnits.size(); i++)
-		{
-			mpUnits[i]->changeCohesion(add);
-		}
+		return std::to_string(mpUnits[1]->getCohesion());
 	}
+	return "";
 }
 
-void UnitManager::changeWeightSeparation(bool add)
+std::string UnitManager::getAllSeparation()
 {
 	if (mpUnits.size() > 1)
 	{
-		for (unsigned int i = 1; i < mpUnits.size(); i++)
-		{
-			mpUnits[i]->changeSeparation(add);
-		}
+		return std::to_string(mpUnits[1]->getSeparation());
 	}
+	return "";
 }
 
-void UnitManager::changeWeightAllignment(bool add)
+std::string UnitManager::getAllAllignment()
 {
 	if (mpUnits.size() > 1)
 	{
-		for (unsigned int i = 1; i < mpUnits.size(); i++)
-		{
-			mpUnits[i]->changeAllignment(add);
-		}
+		return std::to_string(mpUnits[1]->getAllignment());
 	}
-}
-
-float UnitManager::getAllCohesion()
-{
-	if (mpUnits.size() > 1)
-	{
-		return mpUnits[1]->getCohesion();
-	}
-}
-
-float UnitManager::getAllSeparation()
-{
-	if (mpUnits.size() > 1)
-	{
-		return mpUnits[1]->getSeparation();
-	}
-}
-
-float UnitManager::getAllAllignment()
-{
-	if (mpUnits.size() > 1)
-	{
-		return mpUnits[1]->getAllignment();
-	}
+	return "";
 }

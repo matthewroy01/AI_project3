@@ -36,10 +36,15 @@ const float ALL_RADIUS = 100.0f;
 const int CHARACTER_SIDE = 32;
 const int WALL_THICKNESS = 75;
 
+// constants for weight changing
+const float WEIGHT_CHANGE = 0.1f;
+
 // pi for rotation
 const float MY_PI = 3.14159265;
 
 const float LOOP_TARGET_TIME = 33.3f;//how long should each frame of execution take? 30fps = 33.3ms/frame
+
+const std::string FILENAME = "save.txt";
 
 class Game:public Trackable
 {
@@ -79,6 +84,19 @@ public:
 	float getAllAngular() { return ALL_MAX_ANGULAR; };
 	float getAllRadius() { return ALL_RADIUS; };
 
+	// for setting up initial values for weights
+	float getCohWeight() { return mStartCohWeight; }
+	float getSepWeight() { return mStartSepWeight; }
+	float getAlgnWeight() { return mStartAlgnWeight; }
+
+	// accessors and mutators for mode values (assignment 3)
+	void changeWeightCohesion(bool add);
+	void changeWeightSeparation(bool add);
+	void changeWeightAllignment(bool add);
+
+	// save to the file
+	void saveValues();
+
 private:
 	GraphicsSystem* mpGraphicsSystem;
 	GraphicsBufferManager* mpGraphicsBufferManager;
@@ -99,6 +117,8 @@ private:
 			  SPAWN_DISTANCE_SEEK = 100,
 			  SPAWN_DISTANCE_WANDERSEEK = 200,
 			  SPAWN_DISTANCE_WANDERFLEE = 100;
+
+	float mStartCohWeight = 0, mStartSepWeight = 0, mStartAlgnWeight = 0;
 
 	//should be somewhere else
 	ALLEGRO_SAMPLE* mpSample;

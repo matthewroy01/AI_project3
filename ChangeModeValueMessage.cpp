@@ -21,17 +21,17 @@ void ChangeModeValueMessage::process()
 	{
 		case 0 :
 		{
-			GET_GAME->getUnitManager()->changeWeightCohesion(mAdd);
+			GET_GAME->changeWeightCohesion(mAdd);
 			break;
 		}
 		case 1 :
 		{
-			GET_GAME->getUnitManager()->changeWeightSeparation(mAdd);
+			GET_GAME->changeWeightSeparation(mAdd);
 			break;
 		}
 		case 2 :
 		{
-			GET_GAME->getUnitManager()->changeWeightAllignment(mAdd);
+			GET_GAME->changeWeightAllignment(mAdd);
 			break;
 		}
 		default:

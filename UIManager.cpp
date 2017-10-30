@@ -67,7 +67,7 @@ void UIManager::doUI()
 		al_draw_text(mpFont, al_map_rgb(255, 255, 255), 10, 10, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
 
 		// cohesion
-		tmpStr = (std::string)"Cohesion: " + std::to_string(GET_GAME->getUnitManager()->getAllCohesion());
+		tmpStr = (std::string)"Cohesion: " + GET_GAME->getUnitManager()->getAllCohesion();
 		if (GET_GAME->getUnitManager()->GetCurrentMode() == 0)
 		{
 			al_draw_text(mpFont, al_map_rgb(255, 0, 0), 10, 35, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
@@ -78,7 +78,7 @@ void UIManager::doUI()
 		}
 
 		// separation
-		tmpStr = (std::string)"Separation: " + std::to_string(GET_GAME->getUnitManager()->getAllSeparation());
+		tmpStr = (std::string)"Separation: " + GET_GAME->getUnitManager()->getAllSeparation();
 		if (GET_GAME->getUnitManager()->GetCurrentMode() == 1)
 		{
 			al_draw_text(mpFont, al_map_rgb(255, 0, 0), 10, 60, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());
@@ -89,7 +89,7 @@ void UIManager::doUI()
 		}
 
 		// allignment
-		tmpStr = (std::string)"Allignment: " + std::to_string(GET_GAME->getUnitManager()->getAllAllignment());
+		tmpStr = (std::string)"Allignment: " + GET_GAME->getUnitManager()->getAllAllignment();
 		if (GET_GAME->getUnitManager()->GetCurrentMode() == 2)
 		{
 			al_draw_text(mpFont, al_map_rgb(255, 0, 0), 10, 85, ALLEGRO_ALIGN_LEFT, tmpStr.c_str());

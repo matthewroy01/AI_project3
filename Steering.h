@@ -16,6 +16,7 @@
 #include "Vector2D.h"
 #include "Kinematic.h"
 #include "Trackable.h"
+#include "Game.h"
 
 // wander rotation
 const float WAS_MAX_WANDER_ROTATION = 1.0f;
@@ -34,7 +35,7 @@ class Steering: public Trackable
 {
 public:
 	//constructors and destructors
-	Steering( const Vector2D& theLinear = gZeroVector2D, float theAngular = 0.0f, bool applyDirectly = false ):mLinear(theLinear),mAngular(theAngular) {};
+	Steering(const Vector2D& theLinear = gZeroVector2D, float theAngular = 0.0f, bool applyDirectly = false) :mLinear(theLinear), mAngular(theAngular){};
 	Steering( const Steering& rhs ):mLinear(rhs.mLinear), mAngular(rhs.mAngular), mApplyDirectly(rhs.mApplyDirectly){};
 	virtual ~Steering(){};
 

@@ -42,7 +42,7 @@ void KinematicUnit::draw( GraphicsBuffer* pBuffer )
 
 void KinematicUnit::update(float time, float vel, float rad, float ang)
 {
-	// set values according to mode
+	// set values according to mode (
 	mMaxVelocity = vel;
 	mTargetRadius = rad;
 	mAngularVelocity = ang;
@@ -51,6 +51,10 @@ void KinematicUnit::update(float time, float vel, float rad, float ang)
 	if( mpCurrentSteering != NULL )
 	{
 		steering = mpCurrentSteering->getSteering();
+		
+		mpCurrentSteering->W_COHESION = gpGame->getCohWeight();
+		mpCurrentSteering->W_SEPARATION = gpGame->getSepWeight();
+		mpCurrentSteering->W_VELOCITY_MATCH = gpGame->getAlgnWeight();
 	}
 	else
 	{

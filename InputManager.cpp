@@ -16,6 +16,7 @@
 #include "ChangeModeMessage.h"
 #include "ToggleDisplayInfoMessage.h"
 #include "UnitCreateFiveBoidsMessage.h"
+#include "SaveValuesMessage.h"
 
 InputManager::InputManager()
 {
@@ -82,7 +83,7 @@ void InputManager::Update()
 	}
 
 	//if 's' key is pressed, change current mode to "separation"
-	if (al_key_down(&keyState, ALLEGRO_KEY_S) && !mSdown)
+	if (al_key_down(&keyState, ALLEGRO_KEY_S) && !mSdown && !mCTRLdown)
 	{
 		mSdown = true;
 		GameMessage* pMessage = new ChangeModeMessage(1);
@@ -130,6 +131,16 @@ void InputManager::Update()
 		int tmpMode = GET_GAME->getUnitManager()->GetCurrentMode();
 
 		GameMessage* pMessage = new ChangeModeValueMessage(tmpMode, false);
+		MESSAGE_MANAGER->addMessage(pMessage, 0);
+	}
+
+	//if 'ctrl' current weights are saved
+	if (al_key_down(&keyState, ALLEGRO_KEY_LCTRL) && al_key_down(&keyState, ALLEGRO_KEY_S) && !mCTRLdown)
+	{
+		mCTRLdown = true;
+		mSdown = true;
+
+		GameMessage* pMessage = new SaveValuesMessage();
 		MESSAGE_MANAGER->addMessage(pMessage, 0);
 	}
 

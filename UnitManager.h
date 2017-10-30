@@ -63,14 +63,9 @@ class UnitManager : public Trackable
 		float getAllAngular() { return mAllAngularVelocity; };
 		float getAllRadius() { return mAllRadius; };
 
-		float getAllCohesion();
-		float getAllSeparation();
-		float getAllAllignment();
-
-		// accessors and mutators for mode values (assignment 3)
-		void changeWeightCohesion(bool add);
-		void changeWeightSeparation(bool add);
-		void changeWeightAllignment(bool add);
+		std::string getAllCohesion();
+		std::string getAllSeparation();
+		std::string getAllAllignment();
 };
 
 #endif

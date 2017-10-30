@@ -9,6 +9,8 @@
 #include <allegro5/allegro_primitives.h>
 
 #include <sstream>
+#include <iostream>
+#include <fstream>
 
 #include "Game.h"
 #include "GraphicsSystem.h"
@@ -41,7 +43,6 @@ Game::Game()
 	,mShouldExit(false)
 	,mpSample(NULL)
 	,mBackgroundBufferID(INVALID_ID)
-	// new stuff
 	,mpUnitManager()
 	,mpInputManager()
 {
@@ -163,6 +164,38 @@ bool Game::init()
 	if( pAIBuffer != NULL )
 	{
 		mpEnemyArrow = mpSpriteManager->createAndManageSprite( AI_ICON_SPRITE_ID, pAIBuffer, 0, 0, pAIBuffer->getWidth(), pAIBuffer->getHeight() );
+	}
+
+	// read from the file if one exists
+	ifstream fin;
+	fin.open(FILENAME);
+
+	// if the file opened, read the values and assign the weights accordingly
+	if (fin.is_open())
+	{
+		string tmp1, tmp2, tmp3;
+
+		getline(fin, tmp1);
+		getline(fin, tmp2);
+		getline(fin, tmp3);
+
+		//convert to floats
+		mStartCohWeight = stof(tmp1);
+		mStartSepWeight = stof(tmp2);
+		mStartAlgnWeight = stof(tmp3);
+
+		fin.close();
+	}
+	// if the file wasn't opened, initialize the values at zero instead
+	else
+	{
+		std::cout << "could not open file or file did not exist" << std::endl;
+
+		mStartCohWeight = 0;
+		mStartSepWeight = 0;
+		mStartAlgnWeight = 0;
+
+		fin.close();
 	}
 
 	mpUnitManager = new UnitManager();
@@ -329,4 +362,59 @@ void Game::createFiveBoids()
 	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos, 1, vel, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos, 1, vel, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
 	mpUnitManager->AddUnit(new KinematicUnit(mpEnemyArrow, pos, 1, vel, 0.0f, 180.0f, 100.0f, CHARACTER_SIDE, CHARACTER_SIDE), 5);
+}
+
+// these functions tell all units to change their values (assignment 3)
+void Game::changeWeightCohesion(bool add)
+{
+	if (add)
+	{
+		mStartCohWeight += WEIGHT_CHANGE;
+	}
+	else
+	{
+		mStartCohWeight -= WEIGHT_CHANGE;
+	}
+}
+
+void Game::changeWeightSeparation(bool add)
+{
+	if (add)
+	{
+		mStartSepWeight += WEIGHT_CHANGE;
+	}
+	else
+	{
+		mStartSepWeight -= WEIGHT_CHANGE;
+	}
+}
+
+void Game::changeWeightAllignment(bool add)
+{
+	if (add)
+	{
+		mStartAlgnWeight += WEIGHT_CHANGE;
+	}
+	else
+	{
+		mStartAlgnWeight -= WEIGHT_CHANGE;
+	}
+}
+
+void Game::saveValues()
+{
+	ofstream fout;
+	fout.open(FILENAME);
+
+	// output weights to file
+	if (fout.is_open())
+	{
+		fout << mStartCohWeight << std::endl;
+		fout << mStartSepWeight << std::endl;
+		fout << mStartAlgnWeight << std::endl;
+	}
+
+	std::cout << "Saved weights." << std::endl;
+
+	fout.close();
 }
