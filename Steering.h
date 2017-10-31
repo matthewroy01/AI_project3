@@ -51,16 +51,21 @@ public:
 	Steering* operator+=(Steering* add);
 	Steering* operator*(float left);
 
-	void changeWeight(int mode, float amount, bool add);
+	float getWCohesion() { return W_COHESION; }
+	float getWSeparation() { return W_SEPARATION; }
+	float getWVelocityMatch() { return W_VELOCITY_MATCH; }
 
-	// some weights are here so they can be changed
-	float W_COHESION = 1.0f;
-	float W_SEPARATION = 0.3f;
-	float W_VELOCITY_MATCH = 1.5f;
+	void setWCohesion(float val) { W_COHESION = val; }
+	void setWSeparation(float val) { W_SEPARATION = val; }
+	void setWVelocityMatch(float val) { W_VELOCITY_MATCH = val; }
 
 protected:
 	Vector2D mLinear;//linear velocity
 	float mAngular;//angular velocity
 	bool mApplyDirectly;
 	
+	// some weights are here so they can be changed
+	float W_COHESION = 1.0f;
+	float W_SEPARATION = 0.3f;
+	float W_VELOCITY_MATCH = 1.5f;
 };

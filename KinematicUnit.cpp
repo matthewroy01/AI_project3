@@ -52,9 +52,9 @@ void KinematicUnit::update(float time, float vel, float rad, float ang)
 	{
 		steering = mpCurrentSteering->getSteering();
 		
-		mpCurrentSteering->W_COHESION = gpGame->getCohWeight();
-		mpCurrentSteering->W_SEPARATION = gpGame->getSepWeight();
-		mpCurrentSteering->W_VELOCITY_MATCH = gpGame->getAlgnWeight();
+		mpCurrentSteering->setWCohesion(gpGame->getCohWeight());
+		mpCurrentSteering->setWSeparation(gpGame->getSepWeight());
+		mpCurrentSteering->setWVelocityMatch(gpGame->getAlgnWeight());
 	}
 	else
 	{
@@ -150,19 +150,4 @@ void KinematicUnit::flock()
 {
 	A3Blend* pA3Blend = new A3Blend(this);
 	setSteering(pA3Blend);
-}
-
-void KinematicUnit::changeCohesion(bool add)
-{
-	mpCurrentSteering->changeWeight(0, 0.1f, add);
-}
-
-void KinematicUnit::changeSeparation(bool add)
-{
-	mpCurrentSteering->changeWeight(1, 0.1f, add);
-}
-
-void KinematicUnit::changeAllignment(bool add)
-{
-	mpCurrentSteering->changeWeight(2, 0.1f, add);
 }

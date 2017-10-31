@@ -60,14 +60,9 @@ public:
 	int getHeight() { return mHeight; };
 	int getWidth() { return mWidth; };
 
-	// for modes (assignment 3)
-	void changeCohesion(bool add);
-	void changeSeparation(bool add);
-	void changeAllignment(bool add);
-
-	float getCohesion() { return mpCurrentSteering->W_COHESION; }
-	float getSeparation() { return mpCurrentSteering->W_SEPARATION; }
-	float getAllignment() { return mpCurrentSteering->W_VELOCITY_MATCH; }
+	float getCohesion() { return mpCurrentSteering->getWCohesion(); }
+	float getSeparation() { return mpCurrentSteering->getWSeparation(); }
+	float getAllignment() { return mpCurrentSteering->getWVelocityMatch(); }
 
 private:
 	Sprite* mpSprite;
