@@ -24,6 +24,7 @@
     <ClInclude Include="A3VelocityMatch.h" />
     <ClInclude Include="EndGameMessage.h" />
     <ClInclude Include="SaveValuesMessage.h" />
+    <ClInclude Include="ToggleAvoidWallsMessage.h" />
     <ClInclude Include="ToggleDisplayInfoMessage.h" />
     <ClInclude Include="ChangeModeMessage.h" />
     <ClInclude Include="Defines.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="EndGameMessage.cpp" />
     <ClCompile Include="A3Separation.cpp" />
     <ClCompile Include="SaveValuesMessage.cpp" />
+    <ClCompile Include="ToggleAvoidWallsMessage.cpp" />
     <ClCompile Include="ToggleDisplayInfoMessage.cpp" />
     <ClCompile Include="ChangeModeMessage.cpp" />
     <ClCompile Include="DynamicArriveSteering.cpp" />

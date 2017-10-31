@@ -97,6 +97,12 @@ public:
 	// save to the file
 	void saveValues();
 
+	/*--------------------------------------------------*/
+	// THESE FUNCTIONS USED FOR TESTING WALL COLLISIONS
+	/*--------------------------------------------------*/
+	bool getShouldAvoidWalls() { return mShouldAvoidWalls; }
+	void setShouldAvoidWalls(bool val) { mShouldAvoidWalls = val; };
+
 private:
 	GraphicsSystem* mpGraphicsSystem;
 	GraphicsBufferManager* mpGraphicsBufferManager;
@@ -126,6 +132,11 @@ private:
 	IDType mPlayerIconBufferID;
 	IDType mEnemyIconBufferID;
 	IDType mWallBufferID;
+
+	/*--------------------------------------------*/
+	// THIS BOOL USED FOR TESTING WALL COLLISIONS
+	/*--------------------------------------------*/
+	bool mShouldAvoidWalls = false;
 };
 
 float genRandomBinomial();//range -1:1 from "Artificial Intelligence for Games", Millington and Funge

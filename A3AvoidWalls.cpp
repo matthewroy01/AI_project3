@@ -17,40 +17,43 @@ A3AvoidWalls::A3AvoidWalls(KinematicUnit *pMover)
 
 Steering* A3AvoidWalls::getSteering()
 {
-	/*for (int i = 0; i < gpGame->getUnitManager()->getNumberOfWalls(); i++)
+	if (gpGame->getShouldAvoidWalls() == true)
 	{
-		// do the raycast and return the point of collision
-		Vector2D colPoint = getRaycast(gpGame->getUnitManager()->GetWall(i));
-
-		// check to see if the point of collision lines up with any of the edges of the walls
-		if (colPoint != NULL)
+		for (int i = 0; i < gpGame->getUnitManager()->getNumberOfWalls(); i++)
 		{
-			if (colPoint.getX() == gpGame->getUnitManager()->GetWall(i)->getTopLeft().getX())
+			// do the raycast and return the point of collision
+			Vector2D colPoint = getRaycast(gpGame->getUnitManager()->GetWall(i));
+
+			// check to see if the point of collision lines up with any of the edges of the walls
+			if (colPoint != NULL)
 			{
-				// seek left
-				mLinear = Vector2D(colPoint.getX() - ESCAPE_STRENGTH, colPoint.getY()) - mpMover->getPosition();
+				if (colPoint.getX() == gpGame->getUnitManager()->GetWall(i)->getTopLeft().getX())
+				{
+					// seek left
+					mLinear = Vector2D(colPoint.getX() - ESCAPE_STRENGTH, colPoint.getY()) - mpMover->getPosition();
+				}
+				else if (colPoint.getX() == gpGame->getUnitManager()->GetWall(i)->getBottomRight().getX())
+				{
+					// seek right
+					mLinear = Vector2D(colPoint.getX() + ESCAPE_STRENGTH, colPoint.getY()) - mpMover->getPosition();
+				}
+				else if (colPoint.getY() == gpGame->getUnitManager()->GetWall(i)->getTopLeft().getY())
+				{
+					// seek up
+					mLinear = Vector2D(colPoint.getX(), colPoint.getY() - ESCAPE_STRENGTH) - mpMover->getPosition();
+				}
+				else if (colPoint.getY() == gpGame->getUnitManager()->GetWall(i)->getBottomRight().getY())
+				{
+					// seek down
+					mLinear = Vector2D(colPoint.getX(), colPoint.getY() + ESCAPE_STRENGTH) - mpMover->getPosition();
+				}
+				std::cout << "avoid wall" << std::endl;
 			}
-			else if (colPoint.getX() == gpGame->getUnitManager()->GetWall(i)->getBottomRight().getX())
-			{
-				// seek right
-				mLinear = Vector2D(colPoint.getX() + ESCAPE_STRENGTH, colPoint.getY()) - mpMover->getPosition();
-			}
-			else if (colPoint.getY() == gpGame->getUnitManager()->GetWall(i)->getTopLeft().getY())
-			{
-				// seek up
-				mLinear = Vector2D(colPoint.getX(), colPoint.getY() - ESCAPE_STRENGTH) - mpMover->getPosition();
-			}
-			else if (colPoint.getY() == gpGame->getUnitManager()->GetWall(i)->getBottomRight().getY())
-			{
-				// seek down
-				mLinear = Vector2D(colPoint.getX(), colPoint.getY() + ESCAPE_STRENGTH) - mpMover->getPosition();
-			}
-			//std::cout << "avoid wall" << std::endl;
 		}
 	}
 
 	mLinear.normalize();
-	mLinear *= mpMover->getMaxVelocity();*/
+	mLinear *= mpMover->getMaxVelocity();
 
 	return this;
 }

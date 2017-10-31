@@ -61,11 +61,13 @@ al_fixed Kinematic::getRotationFromRadians( float radians )
 }
 
 //static
-float Kinematic::getOrientationFromVelocity( float currentOrientation, const Vector2D& velocity )
+float Kinematic::getOrientationFromVelocity( float currentOrientation, const Vector2D& velocity)
 {
 	if( velocity.hasNonZeroLength() )
 	{
 		currentOrientation = atan2(velocity.getY(), velocity.getX());
+		// was this originally:
+		//currentOrientation = atan2(velocity.getX(), -velocity.getY());
 	}
 	return currentOrientation;
 }

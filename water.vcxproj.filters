@@ -130,6 +130,9 @@
     <ClCompile Include="SaveValuesMessage.cpp">
       <Filter>Source Files\Messaging</Filter>
     </ClCompile>
+    <ClCompile Include="ToggleAvoidWallsMessage.cpp">
+      <Filter>Source Files\Messaging</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GraphicsBuffer.h">
@@ -259,6 +262,9 @@
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
     <ClInclude Include="SaveValuesMessage.h">
+      <Filter>Header Files\Messaging</Filter>
+    </ClInclude>
+    <ClInclude Include="ToggleAvoidWallsMessage.h">
       <Filter>Header Files\Messaging</Filter>
     </ClInclude>
   </ItemGroup>
